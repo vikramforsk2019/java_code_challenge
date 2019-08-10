@@ -1,0 +1,54 @@
+1. Assuming that you already have MySQL installed. 
+2.install the connector driver. sudo apt-get install libmysql-java 
+3. The next step is to make sure that the classpath is set. You can have this set automatically by adding this a command to you bashrc file. 
+we run this classpath command every time 
+export CLASSPATH=$CLASSPATH:/usr/share/java/mysql-connector-java.jar 
+4. If you want to set this for all users, you should modify the /etc/environment instead. 
+NOTE:IT WORK NICELY
+You can set the CLASSPATH environment variable under Unix, Linux, or OS X either locally for a user within their .profile, .login or other login file. You can also set it globally by editing the global /etc/profile file. 
+export CLASSPATH=$CLASSPATH:/usr/share/java/mysql-connector-java.jar
+
+
+
+    import java.sql.*;  
+    class connect{  
+    public static void main(String args[]){  
+    try{  
+    Class.forName("com.mysql.jdbc.Driver");  
+    Connection con=DriverManager.getConnection(  
+    "jdbc:mysql://localhost:3306/sonoo","root","");  
+    //here sonoo is database name, root is username and password  
+    System.out.println("okkkk");
+    Statement stmt=con.createStatement();  
+    ResultSet rs=stmt.executeQuery("select * from emp");  
+    while(rs.next())  
+    System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));  
+ System.out.println("okkkk");
+    con.close();  
+    }catch(Exception e){ System.out.println(e);}  
+    }  
+    }  
+
+
+
+
+
+//////for netbeans
+1.add jarfile/addfolder in libraries
+mysql-connector-java-5.1.47.jar
+Just aad jar file using netbeans 
+Remaining process is same 
+Just compile and run program using netbeans﻿ 
+
+
+
+//////////////////
+FOR JAVA PATH
+Permanently set an environment variable. In this example, we create a JAVA_HOME environment variable and add it to $PATH.
+1.check:$PATH
+2.echo $JAVA_HOME
+3.LS -L
+4.GO TO .bashrc and set path
+JAVA_HOME='/USR/LIB/JVM/JAVA-8-ORACLE'
+export JAVA_HOME
+export PATH=$PATH:$JAVA_HOME/bin
